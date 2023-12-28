@@ -14,7 +14,9 @@ Before running the application, ensure that you have the following software inst
 ### Setting Up the Database
 
 Open a MySQL client and execute the SQL script  `setup.sql`  located at the root of the project. This script creates the necessary database and table for the application.
+\```bash
 mysql -u your_username -p < setup.sql
+\```
 Enter your MySQL password when prompted.
 
 ### Configuring Database Connection
