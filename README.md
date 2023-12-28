@@ -10,13 +10,30 @@ Before running the application, ensure that you have the following software inst
 * Apache Maven - for building the project
 * Tomcat Server - for deploying and running the web application
 * MySQL Database - for storing application data
+### Download the project
+
+#### Git Cloning
+1. Open your terminal.
+2. Run the following command to clone the repository:
+    ```bash
+    git clone https://github.com/your_username/TicketTrackerApplication.git
+    ```
+   Replace `your_username` with your actual GitHub username.
+
+#### Or Downloading the repo
+1. Visit the [repository page](https://github.com/your_username/TicketTrackerApplication).
+2. Click on the "Code" button.
+3. Select "Download ZIP" to download the repository as a ZIP file.
+
+After downloading the project, navigate to the `TicketTrackerApplication` folder.
+
 
 ### Setting Up the Database
 
 Open a MySQL client and execute the SQL script  `setup.sql`  located at the root of the project. This script creates the necessary database and table for the application.
-\```bash
+```bash
 mysql -u your_username -p < setup.sql
-\```
+```
 Enter your MySQL password when prompted.
 
 ### Configuring Database Connection
@@ -30,10 +47,16 @@ Update the properties such as  `db.url` ,  `db.username` , and  `db.password`  w
 Open a terminal and navigate to the root of the project.
 
 Run the following Maven command to build the project:
+```bash
 mvn clean install
-### Deploying to Tomcat Server
+```
 
-## Controller Endpoints
+### Deploying to Tomcat Server
+* Eclipse
+    1. Right Click the Application Folder
+    2. Run on Server
+
+### Controller Endpoints
 
 This document provides details on the endpoints exposed by the  `TicketController`  class in the Spring MVC and Hibernate web application. The base URL for all endpoints is  `http://localhost:8080/admin/tickets` .
 
