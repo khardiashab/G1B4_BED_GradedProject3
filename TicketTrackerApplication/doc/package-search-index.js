@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.learning.app"},{"l":"com.learning.app.controller"},{"l":"com.learning.app.dao"},{"l":"com.learning.app.entities"},{"l":"com.learning.app.services"}];updateSearchResults();

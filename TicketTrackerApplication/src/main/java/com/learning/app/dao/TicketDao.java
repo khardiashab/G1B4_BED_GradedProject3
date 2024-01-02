@@ -6,13 +6,13 @@ import com.learning.app.entities.Ticket;
 
 public interface TicketDao {
 
-    public void save(Ticket ticket);
+	public void save(Ticket ticket);
 
-    public List<Ticket> getAllTickets();
-    
-    public List<Ticket> getAllSearchedTickets(String query);
+	public List<Ticket> getAllTickets();
 
-    public void deleteTicket(Ticket ticket);
+	public List<Ticket> getAllSearchedTickets(String query);
 
-    public Ticket getTicketById(Long ticketId);
+	public void deleteTicket(Ticket ticket);
+
+	public Ticket getTicketById(Long ticketId);
 }

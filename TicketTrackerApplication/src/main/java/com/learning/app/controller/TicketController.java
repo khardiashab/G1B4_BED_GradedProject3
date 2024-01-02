@@ -1,6 +1,6 @@
 package com.learning.app.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,19 +20,22 @@ import com.learning.app.services.TicketService;
 @RequestMapping("/tickets")
 public class TicketController {
 
-	@Autowired
-	private TicketService ticketService;
+    @Autowired
+    private TicketService ticketService;
 
-	@GetMapping()
-	public String homepage(ModelMap model) {
-		try {
-			model.addAttribute("tickets", ticketService.getAllTickets());
-			return "homescreen";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    /**
+     * Display the homepage with all tickets.
+     */
+    @GetMapping()
+    public String getHomePage(ModelMap model) {
+        try {
+            model.addAttribute("tickets", ticketService.getAllTickets());
+            return "homescreen";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getLocalizedMessage());
+            return "error-page";
+        }
+    }
 
 	/**
 	 * Display the form for adding a new ticket.
@@ -54,7 +57,7 @@ public class TicketController {
 	public String saveAndUpdateTicket(@ModelAttribute("ticket") Ticket ticket, Model model) {
 		try {
 			if (ticket.getId() == null) {
-				ticket.setCreatedOn(new Date());
+				ticket.setCreatedOn(LocalDate.now());
 			}
 			ticketService.saveOrUpdateTicket(ticket);
 			return "redirect:/tickets";

@@ -1,5 +1,6 @@
 package com.learning.app.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,7 +31,7 @@ public class Ticket {
     
     @DateTimeFormat(pattern = "MM-dd-yyyy")
     @Column(name = "created_on", columnDefinition = "DATE DEFAULT CURRENT_DATE")
-    private Date createdOn;
+    private LocalDate createdOn;
 
     // Constructors, getters, setters, and other methods...
 
@@ -39,7 +40,7 @@ public class Ticket {
         // Default constructor
     }
 
-    public Ticket(Long id, String title, String shortDescription, String content, Date createdOn) {
+    public Ticket(Long id, String title, String shortDescription, String content, LocalDate createdOn) {
         this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
@@ -86,11 +87,11 @@ public class Ticket {
         this.content = content;
     }
 
-    public Date getCreatedOn() {
+    public LocalDate getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(LocalDate createdOn) {
         this.createdOn = createdOn;
     }
 

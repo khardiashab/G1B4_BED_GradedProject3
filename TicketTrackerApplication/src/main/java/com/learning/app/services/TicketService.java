@@ -6,15 +6,16 @@ import com.learning.app.entities.Ticket;
 
 public interface TicketService {
 
-    public void saveOrUpdateTicket(Ticket ticket);
+	public void saveOrUpdateTicket(Ticket ticket);
 
-    public void updateTicket(Long id, Ticket ticket);
+	public void updateTicket(Long id, Ticket ticket);
 
-    public void deleteTicket(Long ticketId);
+	public void deleteTicket(Long ticketId);
 
-    public List<Ticket> getAllTickets();
-    public List<Ticket> getAllSearchedTickets(String query);
+	public List<Ticket> getAllTickets();
 
-    public Ticket getTicketById(Long ticketId);
+	public List<Ticket> getAllSearchedTickets(String query);
+
+	public Ticket getTicketById(Long ticketId);
 
 }
