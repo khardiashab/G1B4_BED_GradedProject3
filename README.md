@@ -68,7 +68,7 @@ Method:  `GET`
 
 Description: Retrieves a list of all tickets and displays them on the home screen.
 
-View:  `homescreen.jsp` 
+View:  `home-page.jsp` 
 
 Exception View:  `error-page.jsp` 
 
@@ -152,7 +152,7 @@ Method:  `GET`
 
 Description: Searches for tickets based on a query.
 
-View:  `homescreen.jsp` 
+View:  `home-page.jsp` 
 
 Exception View:  `error-page.jsp` 
 

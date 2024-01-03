@@ -1,7 +1,10 @@
 <jsp:include page="templates/header.jsp" />
-<div class="container">
-    <h5>Error:</h5>
-    <hr>
-    <p>${error}</p>
+<div class="container bg-warning">
+	<br>
+	<br>
+	<h1 class="border-bottom">ERROR </h1>
+	<p>${error}</p>
+	<br>
+	<br>
 </div>
 <jsp:include page="templates/footer.jsp" />

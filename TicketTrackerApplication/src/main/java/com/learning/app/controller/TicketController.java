@@ -1,143 +1,32 @@
+/**
+ * TicketController.java is a Java file that contains the definition of a controller class for managing tickets in an application.
+ * It implements various methods for handling different HTTP requests related to tickets, such as creating, updating, deleting, and searching tickets.
+ * The controller is annotated with the @Controller annotation from the Spring Framework, indicating that it is a component responsible for handling HTTP requests.
+ * The class also includes several mapping annotations, such as @GetMapping and @PostMapping, which specify the URL paths for accessing the corresponding methods.
+ * The controller interacts with the Ticket entity class and uses the Model and ModelMap classes for handling data and rendering views.
+ */
 package com.learning.app.controller;
 
-import java.time.LocalDate;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.learning.app.entities.Ticket;
-import com.learning.app.services.TicketService;
 
-@Controller
-@RequestMapping("/tickets")
-public class TicketController {
+public interface TicketController {
 
-    @Autowired
-    private TicketService ticketService;
+    public String getHomePage(ModelMap model);
 
-    /**
-     * Display the homepage with all tickets.
-     */
-    @GetMapping()
-    public String getHomePage(ModelMap model) {
-        try {
-            model.addAttribute("tickets", ticketService.getAllTickets());
-            return "homescreen";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getLocalizedMessage());
-            return "error-page";
-        }
-    }
+    public String getAddTicketPage(Model model);
 
-	/**
-	 * Display the form for adding a new ticket.
-	 */
-	@GetMapping("/newTicket")
-	public String getAddTicketPage(Model model) {
-		try {
-			model.addAttribute("formHeading", "Create a New Ticket");
-			Ticket ticket = new Ticket();
-			model.addAttribute("ticket", ticket);
-			return "create-ticket-page";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String saveAndUpdateTicket(Ticket ticket, Model model);
 
-	@PostMapping("/newTicket")
-	public String saveAndUpdateTicket(@ModelAttribute("ticket") Ticket ticket, Model model) {
-		try {
-			if (ticket.getId() == null) {
-				ticket.setCreatedOn(LocalDate.now());
-			}
-			ticketService.saveOrUpdateTicket(ticket);
-			return "redirect:/tickets";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String viewTicket(Long id, Model model);
 
-	/**
-	 * View details of a ticket.
-	 */
-	@GetMapping("/{id}")
-	public String viewTicket(@PathVariable("id") Long id, Model model) {
-		try {
-			model.addAttribute("formHeading", "Ticket");
-			model.addAttribute("ticket", ticketService.getTicketById(id));
-			return "create-ticket-page";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String getUpdateTicketPage(Model model, Long id);
 
-	/**
-	 * Display the form for updating a ticket.
-	 */
-	@GetMapping("/{id}/edit")
-	public String getUpdateTicketPage(Model model, @PathVariable("id") Long id) {
-		try {
-			model.addAttribute("formHeading", "Edit a Ticket");
-			model.addAttribute("ticket", ticketService.getTicketById(id));
-			return "create-ticket-page";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String updateTicket(Ticket ticket, Long id, Model model);
 
-	/**
-	 * Update a ticket.
-	 */
-	@PostMapping("/{id}/edit")
-	public String updateTicket(@ModelAttribute("ticket") Ticket ticket, @PathVariable("id") Long id, Model model) {
-		try {
-			ticketService.updateTicket(id, ticket);
-			return "redirect:/tickets";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String deleteTicket(Long ticketId, Model model);
 
-	/**
-	 * Delete a ticket.
-	 */
-	@GetMapping("/{id}/delete")
-	public String deleteTicket(@PathVariable("id") Long ticketId, Model model) {
-		try {
-			ticketService.deleteTicket(ticketId);
-			return "redirect:/tickets";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
-
-	/**
-	 * Search for tickets based on a query.
-	 */
-	@GetMapping("/search")
-	public String getSearchedTicket(@RequestParam("query") String query, Model model) {
-		try {
-			if (!query.isEmpty()) {
-				model.addAttribute("tickets", ticketService.getAllSearchedTickets(query));
-			}
-			return "homescreen";
-		} catch (Exception e) {
-			model.addAttribute("error", e.getLocalizedMessage());
-			return "error-page";
-		}
-	}
+    public String getSearchedTicket(String query, Model model);
 }

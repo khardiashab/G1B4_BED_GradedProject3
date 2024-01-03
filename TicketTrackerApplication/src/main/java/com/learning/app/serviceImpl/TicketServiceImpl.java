@@ -66,17 +66,17 @@ public class TicketServiceImpl implements TicketService {
 	/**
 	 * Updates a ticket.
 	 *
-	 * @param id     The ID of the ticket to update.
+	 * @param ticketId     The ID of the ticket to update.
 	 * @param ticket The updated Ticket object.
 	 */
 	@Transactional
-	public void updateTicket(Long id, Ticket ticket) {
-		Ticket existingTicket = ticketDao.getTicketById(id);
+	public void updateTicket(Long ticketId, Ticket ticket) {
+		Ticket existingTicket = ticketDao.getTicketById(ticketId);
 		if (existingTicket != null) {
-			ticket.setId(id);
+			ticket.setId(ticketId);
 			ticketDao.save(ticket);
 		} else {
-			throw new IllegalArgumentException("Ticket not found with ID: " + id);
+			throw new IllegalArgumentException("Ticket not found with ID: " + ticketId);
 		}
 	}
 

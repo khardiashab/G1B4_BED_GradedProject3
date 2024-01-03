@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	public String handleNotFoundException(Model model, Exception ex) {
-		logger.info(ex.getMessage());
+		logger.error(ex.getMessage());
 		model.addAttribute("error", ex.getLocalizedMessage());
 		return "error-page";
 	}

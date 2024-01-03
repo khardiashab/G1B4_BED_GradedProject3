@@ -32,11 +32,11 @@ public class TicketDaoImpl implements TicketDao {
 		try {
 			hibernateTemplate.saveOrUpdate(ticket);
 		} catch (DataAccessException dataAccessException) {
-			String errorMessage = "DataAccessException occurred while saving the ticket. Location: save method. Cause: "
+			String errorMessage = "DataAccessException occurred while saving the ticket. \nLocation: save method. \nCause: "
 					+ dataAccessException.getMessage();
 			throw new RuntimeException(errorMessage, dataAccessException);
 		} catch (Exception e) {
-			String errorMessage = "Exception occurred while saving the ticket. Location: save method. Cause: "
+			String errorMessage = "Exception occurred while saving the ticket. \nLocation: save method. \nCause: "
 					+ e.getMessage();
 			throw new RuntimeException(errorMessage, e);
 		}
@@ -52,11 +52,11 @@ public class TicketDaoImpl implements TicketDao {
 		try {
 			return hibernateTemplate.loadAll(Ticket.class);
 		} catch (DataAccessException dataAccessException) {
-			String errorMessage = "DataAccessException occurred while retrieving the tickets. Location: getAllTickets method. Cause: "
+			String errorMessage = "DataAccessException occurred while retrieving the tickets. \nLocation: getAllTickets method. \nCause: "
 					+ dataAccessException.getMessage();
 			throw new RuntimeException(errorMessage, dataAccessException);
 		} catch (Exception e) {
-			String errorMessage = "Exception occurred while retrieving the tickets. Location: getAllTickets method. Cause: "
+			String errorMessage = "Exception occurred while retrieving the tickets. \nLocation: getAllTickets method. \nCause: "
 					+ e.getMessage();
 			throw new RuntimeException(errorMessage, e);
 		}
@@ -72,11 +72,11 @@ public class TicketDaoImpl implements TicketDao {
 		try {
 			hibernateTemplate.delete(ticket);
 		} catch (DataAccessException dataAccessException) {
-			String errorMessage = "DataAccessException occurred while deleting the ticket. Location: deleteTicket method. Cause: "
+			String errorMessage = "DataAccessException occurred while deleting the ticket. \nLocation: deleteTicket method. \nCause: "
 					+ dataAccessException.getMessage();
 			throw new RuntimeException(errorMessage, dataAccessException);
 		} catch (Exception e) {
-			String errorMessage = "Exception occurred while deleting the ticket. Location: deleteTicket method. Cause: "
+			String errorMessage = "Exception occurred while deleting the ticket. \nLocation: deleteTicket method. \nCause: "
 					+ e.getMessage();
 			throw new RuntimeException(errorMessage, e);
 		}
@@ -98,11 +98,11 @@ public class TicketDaoImpl implements TicketDao {
 			}
 			throw new IllegalArgumentException("This ticket is not valid");
 		} catch (DataAccessException dataAccessException) {
-			String errorMessage = "DataAccessException occurred while retrieving the ticket. Location: getTicketById method. Cause: "
+			String errorMessage = "DataAccessException occurred while retrieving the ticket. \nLocation: getTicketById method. \nCause: "
 					+ dataAccessException.getMessage();
 			throw new RuntimeException(errorMessage, dataAccessException);
 		} catch (Exception e) {
-			String errorMessage = "Exception occurred while retrieving the ticket. Location: getTicketById method. Cause: "
+			String errorMessage = "Exception occurred while retrieving the ticket. \nLocation: getTicketById method. \nCause: "
 					+ e.getMessage();
 			throw new RuntimeException(errorMessage, e);
 		}
@@ -130,11 +130,11 @@ public class TicketDaoImpl implements TicketDao {
 				throw new RuntimeException("SessionFactory is null");
 			}
 		} catch (HibernateException hibernateException) {
-			String errorMessage = "HibernateException occurred while retrieving the searched tickets. Location: getAllSearchedTickets method. Cause: "
+			String errorMessage = "HibernateException occurred while retrieving the searched tickets. \nLocation: getAllSearchedTickets method. \nCause: "
 					+ hibernateException.getMessage();
 			throw new RuntimeException(errorMessage, hibernateException);
 		} catch (Exception e) {
-			String errorMessage = "Exception occurred while retrieving the searched tickets. Location: getAllSearchedTickets method. Cause: "
+			String errorMessage = "Exception occurred while retrieving the searched tickets. \nLocation: getAllSearchedTickets method. \nCause: "
 					+ e.getMessage();
 			throw new RuntimeException(errorMessage, e);
 		}

@@ -1,7 +1,6 @@
 package com.learning.app.entities;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,87 +15,87 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "ticket")
 public class Ticket {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+	@Column(name = "title", nullable = false)
+	private String title;
 
-    @Column(name = "short_description")
-    private String shortDescription;
+	@Column(name = "short_description")
+	private String shortDescription;
 
-    @Column(name = "content")
-    private String content;
-    
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
-    @Column(name = "created_on", columnDefinition = "DATE DEFAULT CURRENT_DATE")
-    private LocalDate createdOn;
+	@Column(name = "content")
+	private String content;
 
-    // Constructors, getters, setters, and other methods...
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	@Column(name = "created_on", columnDefinition = "DATE DEFAULT CURRENT_DATE")
+	private LocalDate createdOn;
 
-    // Constructors
-    public Ticket() {
-        // Default constructor
-    }
+	// Constructors, getters, setters, and other methods...
 
-    public Ticket(Long id, String title, String shortDescription, String content, LocalDate createdOn) {
-        this.id = id;
-        this.title = title;
-        this.shortDescription = shortDescription;
-        this.content = content;
-        this.createdOn = createdOn;
-    }
+	// Constructors
+	public Ticket() {
+		// Default constructor
+	}
 
-    public Ticket(String title, String shortDescription, String content) {
-        this.title = title;
-        this.shortDescription = shortDescription;
-        this.content = content;
-        // this.createdOn = new Date();
-    }
+	public Ticket(Long id, String title, String shortDescription, String content, LocalDate createdOn) {
+		this.id = id;
+		this.title = title;
+		this.shortDescription = shortDescription;
+		this.content = content;
+		this.createdOn = createdOn;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Ticket(String title, String shortDescription, String content) {
+		this.title = title;
+		this.shortDescription = shortDescription;
+		this.content = content;
+		// this.createdOn = new Date();
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
+	public String getShortDescription() {
+		return shortDescription;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public LocalDate getCreatedOn() {
-        return createdOn;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public void setCreatedOn(LocalDate createdOn) {
-        this.createdOn = createdOn;
-    }
+	public LocalDate getCreatedOn() {
+		return createdOn;
+	}
 
-    @Override
-    public String toString() {
-        return "Ticket [id=" + id + ", title=" + title + ", createdOn=" + createdOn + "]";
-    }
+	public void setCreatedOn(LocalDate createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", title=" + title + ", createdOn=" + createdOn + "]";
+	}
 }
